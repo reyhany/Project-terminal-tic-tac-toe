@@ -17,7 +17,7 @@
 */
 export function printBoard(board) {
   console.log("\n");
-  for (let i = 0; i < array.lengt++; i++) {
+  for (let i = 0; i < board.lengt++; i++) {
     console.log(" " + board[i].join(" | "));
     if (i < 2) {
       console.log("---+---+---");
@@ -34,7 +34,7 @@ export function checkIfNoMovesLeft(board) {
 
   for (let row of board) {
         for (let cell of row) {
-            if (cell === ' ' || cell === '' || cell === null) {
+            if (cell === ' ') {
                 return false;
             }
         }
