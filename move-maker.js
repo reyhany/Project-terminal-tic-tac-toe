@@ -16,9 +16,24 @@
         ];
 */
 function validateMove(move, board) {
+    // Check the move format using a regular expression
+    if (!/^[1-3],[1-3]$/.test(move)) {
+        console.log('Try again...');
+        return false;
+    }
+    // Extract row/col (convert from 1-based to 0-based)
+    const [row, col] = move.split(',').map(n => Number(n) - 1);
+    // Check if the board space is free ('_')
+    if (board[row][col] !== '_') {
+        console.log('Try again...');
+        return
+
+      false;
+    }
     // Implement this at the end if you have time, otherwise you can help your teammates!
     return true;
 }
+
 
 /*
     Given 3 parameters:
@@ -32,5 +47,20 @@ function validateMove(move, board) {
             - Return true
 */
 export function makeMove(board, move, player) {
-    return false;
+       
+    // Check if the move is valid
+
+    if (!validateMove(move, board)) {
+        return false;
+    }
+
+    // Convert "row,col" into numeric indices
+    const [row, col] = move.split(',').map(n => Number(n) - 1);
+
+    // Update the board
+    board[row][col] = player;
+
+
+    return true;
 }
+
