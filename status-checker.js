@@ -1,47 +1,75 @@
-import { checkIfNoMovesLeft } from './board-printer.js';
+// import { checkIfNoMovesLeft } from './board-printer.js';
 
-/*
-    Example board:
-        let board = [
-            ['X', '_', '_'],
-            ['_', 'X', '_'],
-            ['O', 'O', 'X']
-        ];
-*/
+// /*
+//     Example board:
+//         let board = [
+//             ['X', '_', '_'],
+//             ['_', 'X', '_'],
+//             ['O', 'O', 'X']
+//         ];
+// */
 
-/*
-    Given 3 parameters:
-        - a tic-tac-toe board (array of arrays)
-        - a player ('X' or 'O')
-        - a row index number (0, 1 or 2)
-    Return true if the player has made a move in all 3 squares in the row
-    Otherwise, return false
-*/
+// /*
+//     Given 3 parameters:
+//         - a tic-tac-toe board (array of arrays)
+//         - a player ('X' or 'O')
+//         - a row index number (0, 1 or 2)
+//     Return true if the player has made a move in all 3 squares in the row
+//     Otherwise, return false
+// */
+// function checkRow(board, player, rowNumber) {
+// }
+
+// /*
+//     Given 3 parameters:
+//         - a tic-tac-toe board (array of arrays)
+//         - a player ('X' or 'O')
+//         - a column index number (0, 1 or 2)
+//     Return true if the player has made a move in all 3 squares in the column
+//     Otherwise, return false
+// */
+// function checkColumn(board, player, columnNumber) {
+// }
+
+// /*
+//     Given 2 parameters:
+//         - a tic-tac-toe board (array of arrays)
+//         - a player ('X' or 'O')
+//     Return true if the player has made a move in 3 diagonal squares
+//     Otherwise, return false
+// */
+// function checkDiagonal(board, player) {
+//     // It may be easier to use an if statement than a loop here
+// }
+
+
+import { checkIfNoMovesLeft } from "./board-printer.js";
+
 function checkRow(board, player, rowNumber) {
+  return (
+    board[rowNumber][0] === player &&
+    board[rowNumber][1] === player &&
+    board[rowNumber][2] === player
+  );
 }
 
-/*
-    Given 3 parameters:
-        - a tic-tac-toe board (array of arrays)
-        - a player ('X' or 'O')
-        - a column index number (0, 1 or 2)
-    Return true if the player has made a move in all 3 squares in the column
-    Otherwise, return false
-*/
 function checkColumn(board, player, columnNumber) {
+  return (
+    board[0][columnNumber] === player &&
+    board[1][columnNumber] === player &&
+    board[2][columnNumber] === player
+  );
 }
 
-/*
-    Given 2 parameters:
-        - a tic-tac-toe board (array of arrays)
-        - a player ('X' or 'O')
-    Return true if the player has made a move in 3 diagonal squares
-    Otherwise, return false
-*/
 function checkDiagonal(board, player) {
-    // It may be easier to use an if statement than a loop here
-}
+  const mainDiagonal =
+    board[0][0] === player && board[1][1] === player && board[2][2] === player;
 
+  const otherDiagonal =
+    board[0][2] === player && board[1][1] === player && board[2][0] === player;
+
+  return mainDiagonal || otherDiagonal;
+}
 
 /*
     There is no need to change any code below this line.
